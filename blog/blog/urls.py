@@ -25,6 +25,6 @@ urlpatterns = [
     #path('api/v1/', include(router.urls)),
 
     ## short_texts app
-    path('short_texts/', include('short_texts.urls', namespace='short_texts')),
+    path('api/short_texts/', include('short_texts.urls', namespace='short_texts')),
 
 ]

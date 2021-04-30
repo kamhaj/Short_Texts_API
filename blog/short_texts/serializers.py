@@ -15,7 +15,7 @@ class PostSerializer(serializers.ModelSerializer):
             'content',
             'views_counter')
 
-        #read_only_fields = ('pk', 'created_date', 'edition_date', 'views_counter')
+        read_only_fields = ('pk', 'created_date', 'edition_date', 'views_counter')
 
 
     def get(self, post_instance):
@@ -34,4 +34,4 @@ class PostSerializer(serializers.ModelSerializer):
 
         # save instance to db
         post_instance.save()
-        return 0
+        return post_instance

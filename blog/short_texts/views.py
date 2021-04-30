@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
 
-from rest_framework.decorators import api_view 	# function based views API
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
 from django.http import HttpResponse, Http404
 from rest_framework import status
@@ -9,48 +9,39 @@ from rest_framework import status
 from .serializers import PostSerializer
 from .models import Post
 
-#from django.shortcuts import render, HttpResponse
-# from django.db import IntegrityError
-# from rest_framework import status
-# import json
-# from rest_framework.permissions import IsAuthenticated
-
-'''
-dodaj uwierzytelnianie (oprocz metody GET)
-
-
-'''
-
-# def views_counter(request, id):
-#     ## refresh views and save
-#     post_object = Post.objects.get(id=id)
-#     post_object.views_counter = post_object.views_counter + 1
-#     post_object.save()
-
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['GET'])
 def api_overview(request):
 	api_urls = {
-		'GET post details': '/post/<int:pk>/',
-		'POST (create) post': '/post/',
-		'PUT (update) post': '/post/<int:pk>/',
-		'DELETE post:': '/post/<int:pk>/'
+		'GET post details': '/api/short_texts/post/get_post_details/<int:pk>/',
+		'POST (create) post': '/api/short_texts/post/',
+		'PUT (update) post': '/api/short_texts/post/<int:pk>/',
+		'DELETE post:': '/api/short_texts/post/<int:pk>/'
 	}
 
 	# return API response
 	return Response(api_urls)
 
 
-'''
-    {  
-        "title": "Test Post 3 Updated",
-        "content": "Lorem ipsum three updated."
-    }
-'''
+## get one Post objects from db
+@api_view(['GET'])
+def get_post_details(request, pk):
+    post_instance = get_object_or_404(Post, pk=pk)
+    serializer = PostSerializer(post_instance)
+    serializer.get(post_instance)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
 class PostsView(APIView):
 
-	## get object or 404
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]		# will deny permission to any unauthenticated user
+
+    ## get object or 404
     def get_object(self, pk):
         try:
             return Post.objects.get(pk=pk)
@@ -58,15 +49,7 @@ class PostsView(APIView):
             raise Http404()
 
 
-    ## get all objects from db
-    def get(self, request, pk, format=None):
-        post_instance = self.get_object(pk)
-        serializer = PostSerializer(post_instance)
-        serializer.get(post_instance)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-    ## create one object
+    ## create one object, required attributes are: title, content
     def post(self, request, format=None):
         # serialize user input
         serializer = PostSerializer(data=request.data)
@@ -77,7 +60,7 @@ class PostsView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-    ## update one object
+    ## update one object, required attributes are: title, content
     def put(self, request, pk, format=None):
         # serialize user input
         serializer = PostSerializer(data=request.data)
