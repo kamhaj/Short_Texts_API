@@ -6,5 +6,5 @@ app_name = 'short_texts'
 
 urlpatterns = [
 	path('', views.api_overview, name='api-overview'),
-	path('post/<int:pk>', views.PostsView.as_view(), name='post-create-update-delete'), #post/<int:pk>/
+	path('post/<int:pk>', views.PostsView.as_view(), name='post-create-update-delete'),
 ]

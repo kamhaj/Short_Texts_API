@@ -91,7 +91,6 @@ class PostsView(APIView):
 
     ## delete one object
     def delete(self, request, pk, format=None):
-        #post_instance = self.get_object(pk)
-        post_instance = Post.objects.get(pk=pk)
+        post_instance = self.get_object(pk)
         post_instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
