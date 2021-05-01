@@ -20,7 +20,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get(self, post_instance):
         post_instance.update_views_counter()
-        return 0
+        return post_instance
 
 
     def update(self, validated_data, post_instance):
