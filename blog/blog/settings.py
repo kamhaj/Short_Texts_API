@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from secret_settings import *
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,9 @@ DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1',
                 'https://kamhaj-short-texts.herokuapp.com']
 
+
+# Keep secret key in production a secret
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default value that will not work')
 
 # Application definition
 
