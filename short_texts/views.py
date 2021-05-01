@@ -66,7 +66,7 @@ class PostsView(APIView):
         serializer = PostSerializer(data=request.data)
         # validate user input, save changes to db if ok, return errors if not
         if serializer.is_valid():
-            post_instance = get_object(pk)
+            post_instance = self.get_object(pk)
             serializer.update(request.data, post_instance)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
