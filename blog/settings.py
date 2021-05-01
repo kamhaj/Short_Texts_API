@@ -145,3 +145,4 @@ STATIC_URL = '/static/'
 
 ## auto set configurations on heroku
 django_heroku.settings(locals())
+
