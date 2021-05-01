@@ -1,8 +1,15 @@
 ## Application using API calls to display/create/edit/delete short texts (Posts). </br></br>
 
 ## Django + DRF utilized.
-## Tests run using PyTest.
+## Tests can be run using PyTest or Django default testing module
+```bash
+	pytest -v
+```
+```bash
+	python manage.py test tests/tests_short_texts
+```
 </br></br>
+
 ## Deployed on Heroku
 base page: 	**https://kamhaj-short-texts.herokuapp.com/api/short_texts/**
 

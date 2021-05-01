@@ -144,3 +144,7 @@ STATIC_URL = '/static/'
 ## auto set configurations on heroku
 django_heroku.settings(locals())
 
+
+## settings for running Django tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = ['--with-spec', '--spec-color']
