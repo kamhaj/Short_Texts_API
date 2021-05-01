@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', True)
 ALLOWED_HOSTS = ['kamhaj-short-texts.herokuapp.com',
                 'localhost',
                 '127.0.0.1']
