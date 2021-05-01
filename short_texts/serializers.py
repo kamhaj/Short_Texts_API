@@ -25,8 +25,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     def update(self, validated_data, post_instance):
         # update post info
-        post_instance.title = validated_data.pop('title')
-        post_instance.content = validated_data.pop('content')
+        post_instance.title = validated_data.get('title', post_instance.title)
+        post_instance.content = validated_data.get('content', post_instance.content)
 
         # reset views counter and update edition date
         post_instance.reset_views_counter()
