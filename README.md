@@ -1,5 +1,10 @@
 ## Application using API calls to display/create/edit/delete short texts (Posts). </br></br>
 
+## Deployed on Heroku
+base page: 	**https://kamhaj-short-texts.herokuapp.com/api/short_texts/**
+
+</br>
+
 ## Django + DRF utilized.
 ## Tests can be run using PyTest or Django default testing module
 ```bash
@@ -10,10 +15,7 @@
 ```
 </br></br>
 
-## Deployed on Heroku
-base page: 	**https://kamhaj-short-texts.herokuapp.com/api/short_texts/**
 
-</br>
 
 ## API usage:
 1.  GET - to get details on specified (by id) Post </br></br>
@@ -23,19 +25,20 @@ base page: 	**https://kamhaj-short-texts.herokuapp.com/api/short_texts/**
  example URL: https://kamhaj-short-texts.herokuapp.com/api/short_texts/post/post_details/1 </br>
  request fields: - </br>
 	
-  ```bash
+  ```yaml
 	response_body_example = {
-								"title": "Dummy title",
-								"content":"Dummy content.",
-								"views_counter": 7
-							}
+				"title": "Dummy title",
+				"content":"Dummy content.",
+				"views_counter": 7
+				}
    ```
   
-additional info: </br>
-                  1. no body required </br>
-                  2. views_counter is updated by +1 every time resource is requested. </br>
-					        3. pk - primary key (id) </br>
-           
+&nbsp;&nbsp;&nbsp;&nbsp; Additional info: </br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. no body required </br>
+	 	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. pk - primary key (id) </br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. views_counter is updated by +1 every time resource is requested. </br>
+</br></br>
+
 2. POST - to create a new Post </br></br>
 	authentication required: Yes (Token) </br>
 	response code on success: 201 </br>
@@ -43,20 +46,21 @@ additional info: </br>
 	example URL: https://kamhaj-short-texts.herokuapp.com/api/short_texts/post </br>
 	request fields: title, content </br>
 	
-  ```bash
+```yaml
 	request_body_example = 	{
-								"title": "New title",
-								"content":"New content."
-							}
-  ```
-  ```bash            
-  response_body_example = 	{
-								"title": "New title",
-								"content":"New content.",
-                "views_counter": 0
-							}
-  ```
-   
+				"title": "New title",
+				"content":"New content."
+				}
+```
+```bash            
+  	response_body_example = {
+				"title": "New title",
+				"content":"New content.",
+                		"views_counter": 0
+				}
+```
+</br></br>
+
 3. PUT - to update existing Post </br></br>
 	authentication required: Yes (Token) </br>
 	response code on success: 200 </br>
@@ -64,15 +68,24 @@ additional info: </br>
 	example URL: https://kamhaj-short-texts.herokuapp.com/api/short_texts/post/1 </br>
 	request fields: title, content </br>
 	
-  ```bash
+```bash
 	request_body_example = 	{
-								"title": "Updated title",
-								"content":"Updated content."
-							}
-  ````
-  
-additional info: </br>
-                1. pk - primary key (id) </br>
+				"title": "Updated title",
+				"content":"Updated content."
+				}
+```
+```bash            
+  	response_body_example = {
+				"title": "Updated title",
+				"content":"Updated content.",
+                		"views_counter": 0
+				}
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Additional info: </br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. pk - primary key (id) </br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. views_counter is reset to 0 every time resource is updated. </br>
+</br></br>
 	
 4. DELETE - to delete existing Post </br></br>
 	authentication required: Yes (Token) </br>
@@ -81,12 +94,12 @@ additional info: </br>
 	example URL: https://kamhaj-short-texts.herokuapp.com/api/short_texts/post/1 </br>
 	request fields: - </br>
 	
-	additional info: </br>
-                  1. no body required </br>
-					        2. pk - primary key (id) </br>
+&nbsp;&nbsp;&nbsp;&nbsp; Additional info: </br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. no body required </br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. pk - primary key (id) </br>
 
 </br></br>
-## Deployed using Heroku CLI: (steps): </br>
+## Deployed using Heroku CLI: (steps): <br/>
 
 1. Heroku login in CLI. <br/>
 2. heroku git:remote -a kamhaj-short-texts (set git remote to https://git.heroku.com/kamhaj-short-texts.git). <br/>
@@ -96,7 +109,6 @@ additional info: </br>
 pip install gunicorn 
 pip install whitenoise
 ```
-  <br/>
 4. Set up files that Heroku needs: 
 		requirements.txt (automatically installed before app startup)
 		runtime.txt (python version specified)
