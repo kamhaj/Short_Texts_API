@@ -25,10 +25,10 @@ base page: 	**https://kamhaj-short-texts.herokuapp.com/api/short_texts/**
  example URL: https://kamhaj-short-texts.herokuapp.com/api/short_texts/post/post_details/1 </br>
  request fields: - </br>
 	
-  ```yaml
+  ```bash
 	response_body_example = {
 				"title": "Dummy title",
-				"content":"Dummy content.",
+				"content": "Dummy content.",
 				"views_counter": 7
 				}
    ```
@@ -46,16 +46,16 @@ base page: 	**https://kamhaj-short-texts.herokuapp.com/api/short_texts/**
 	example URL: https://kamhaj-short-texts.herokuapp.com/api/short_texts/post </br>
 	request fields: title, content </br>
 	
-```yaml
+```bash
 	request_body_example = 	{
 				"title": "New title",
-				"content":"New content."
+				"content": "New content."
 				}
 ```
 ```bash            
   	response_body_example = {
 				"title": "New title",
-				"content":"New content.",
+				"content": "New content.",
                 		"views_counter": 0
 				}
 ```
@@ -71,13 +71,13 @@ base page: 	**https://kamhaj-short-texts.herokuapp.com/api/short_texts/**
 ```bash
 	request_body_example = 	{
 				"title": "Updated title",
-				"content":"Updated content."
+				"content": "Updated content."
 				}
 ```
 ```bash            
   	response_body_example = {
 				"title": "Updated title",
-				"content":"Updated content.",
+				"content": "Updated content.",
                 		"views_counter": 0
 				}
 ```
