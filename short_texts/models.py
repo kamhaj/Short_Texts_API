@@ -4,8 +4,8 @@ from django.utils import timezone
 
 class Post(models.Model):
     title = models.CharField(max_length=60)
-    content = models.CharField(max_length=160)       # unrestricted text
-    creation_date = models.DateTimeField(default=timezone.now, editable=False) #
+    content = models.CharField(max_length=160)
+    creation_date = models.DateTimeField(default=timezone.now, editable=False)
     edition_date = models.DateTimeField(blank=True, null=True)
     views_counter = models.IntegerField(default=0, null=True, blank=True)
 
