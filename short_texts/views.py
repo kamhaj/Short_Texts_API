@@ -16,10 +16,10 @@ from rest_framework.permissions import IsAuthenticated
 @api_view(['GET'])
 def api_overview(request):
 	api_urls = {
-		'GET post details': '/api/short_texts/post/post_details/<int:pk>/',
-		'POST (create) post': '/api/short_texts/post/',
-		'PUT (update) post': '/api/short_texts/post/<int:pk>/',
-		'DELETE post:': '/api/short_texts/post/<int:pk>/'
+		'GET post details': '/api/short_texts/post/post_details/<int:pk>',
+		'POST (create) post': '/api/short_texts/post',
+		'PUT (update) post': '/api/short_texts/post/<int:pk>',
+		'DELETE post:': '/api/short_texts/post/<int:pk>'
 	}
 
 	# return API response
